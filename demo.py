@@ -7,7 +7,6 @@ from PIL import Image
 import numpy as np
 from pathlib import Path
 import io
-
 import google.generativeai as genai
 
 # from IPython.display import Image
@@ -51,16 +50,16 @@ safety_settings = [
 ]
 
 
-with st.sidebar:
-    st.title("Menu:")
-    uploaded_img = st.file_uploader("Tải ảnh cần mô tả lên (lưu ý: dung lượng file dưới 4mb)", type=["jpg", "png", "jpeg"], accept_multiple_files=False)
 
-    if uploaded_img is not None:    
-        img = Image.open(uploaded_img)
-        st.image(uploaded_img)
-        
-    else:
-        st.write("vui lòng upload file")
+st.title("Menu:")
+uploaded_img = st.file_uploader("Tải ảnh cần mô tả lên (lưu ý: dung lượng file dưới 4mb)", type=["jpg", "png", "jpeg"], accept_multiple_files=False)
+
+if uploaded_img is not None:    
+    img = Image.open(uploaded_img)
+    st.image(uploaded_img)
+    
+else:
+    st.write("vui lòng upload file")
 
 model = genai.GenerativeModel("gemini-pro-vision")
 
